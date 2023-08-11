@@ -13,7 +13,7 @@ import {
   QrCodeIcon,
 } from "@heroicons/react/24/outline";
 import { Address, Balance, BlockieAvatar } from "~~/components/scaffold-eth";
-import { useAutoConnect, useNetworkColor } from "~~/hooks/scaffold-eth";
+import { useAutoConnect } from "~~/hooks/scaffold-eth";
 import { getBlockExplorerAddressLink, getTargetNetwork } from "~~/utils/scaffold-eth";
 
 /**
@@ -21,7 +21,6 @@ import { getBlockExplorerAddressLink, getTargetNetwork } from "~~/utils/scaffold
  */
 export const RainbowKitCustomConnectButton = () => {
   useAutoConnect();
-  const networkColor = useNetworkColor();
   const configuredNetwork = getTargetNetwork();
   const { disconnect } = useDisconnect();
   const { switchNetwork } = useSwitchNetwork();
@@ -40,7 +39,7 @@ export const RainbowKitCustomConnectButton = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <button className="btn btn-primary btn-sm" onClick={openConnectModal} type="button">
+                  <button className="btn bg-white btn-sm text-primary hover:bg-white" onClick={openConnectModal} type="button">
                     Connect Wallet
                   </button>
                 );
@@ -59,13 +58,13 @@ export const RainbowKitCustomConnectButton = () => {
                     >
                       <li>
                         <button
-                          className="menu-item btn-sm !rounded-xl"
+                          className="menu-item btn-sm !rounded-xl text-white"
                           type="button"
                           onClick={() => switchNetwork?.(configuredNetwork.id)}
                         >
                           <ArrowsRightLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
-                          <span className="whitespace-nowrap">
-                            Switch to <span style={{ color: networkColor }}>{configuredNetwork.name}</span>
+                          <span className="whitespace-nowrap text-black">
+                            Switch to {configuredNetwork.name}
                           </span>
                         </button>
                       </li>
@@ -87,19 +86,19 @@ export const RainbowKitCustomConnectButton = () => {
                 <div className="px-2 flex justify-end items-center">
                   <div className="flex flex-col items-center mr-1">
                     <Balance address={account.address} className="min-h-0 h-auto" />
-                    <span className="text-xs" style={{ color: "#141414" }}>
+                    <span className="text-xs" style={{ color: "#FFFFFF" }}>
                       {chain.name}
                     </span>
                   </div>
                   <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-primary btn-sm pl-0 pr-2 dropdown-toggle text-white">
+                    <label tabIndex={0} className="btn bg-white hover:bg-white btn-sm pl-0 pr-2 dropdown-toggle text-primary">
                       <BlockieAvatar address={account.address} size={24} ensImage={account.ensAvatar} />
                       <span className="ml-2 mr-1">{account.displayName}</span>
                       <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
                     </label>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu p-2 mt-1 shadow-center shadow-white bg-primary text-white rounded-box gap-1"
+                      className="dropdown-content menu p-2 mt-1 shadow-center shadow-white bg-white text-primary rounded-box gap-1"
                     >
                       <li>
                         {addressCopied ? (
