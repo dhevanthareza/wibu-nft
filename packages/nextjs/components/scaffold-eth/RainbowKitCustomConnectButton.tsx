@@ -87,19 +87,19 @@ export const RainbowKitCustomConnectButton = () => {
                 <div className="px-2 flex justify-end items-center">
                   <div className="flex flex-col items-center mr-1">
                     <Balance address={account.address} className="min-h-0 h-auto" />
-                    <span className="text-xs" style={{ color: networkColor }}>
+                    <span className="text-xs" style={{ color: "#141414" }}>
                       {chain.name}
                     </span>
                   </div>
                   <div className="dropdown dropdown-end">
-                    <label tabIndex={0} className="btn btn-secondary btn-sm pl-0 pr-2 shadow-md dropdown-toggle">
+                    <label tabIndex={0} className="btn btn-primary btn-sm pl-0 pr-2 dropdown-toggle text-white">
                       <BlockieAvatar address={account.address} size={24} ensImage={account.ensAvatar} />
                       <span className="ml-2 mr-1">{account.displayName}</span>
                       <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
                     </label>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu p-2 mt-1 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
+                      className="dropdown-content menu p-2 mt-1 shadow-center shadow-white bg-primary text-white rounded-box gap-1"
                     >
                       <li>
                         {addressCopied ? (
