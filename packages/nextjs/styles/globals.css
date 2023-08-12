@@ -3,9 +3,6 @@
 @import "tailwindcss/utilities";
 
 :root,
-[data-theme] {
-  background: #FFFFFF;
-}
 
 body {
   min-height: 100vh;
