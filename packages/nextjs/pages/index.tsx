@@ -131,7 +131,7 @@ const Home: NextPage = () => {
     const tokenURI: any = await onionWibuNftContract?.read.tokenURI([tokenId]);
     if (!`${tokenURI}`.includes("-")) {
       try {
-        let jsonData: any = await axios.get(tokenURI);
+        const jsonData: any = await axios.get(tokenURI);
         jsonData.data.tokenId = tokenId;
         return jsonData.data;
         // refreshCollectible()

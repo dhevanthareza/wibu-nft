@@ -11,7 +11,7 @@ import "@matterlabs/hardhat-zksync-verify";
 const providerApiKey = process.env.ALCHEMY_API_KEY || "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
 // If not set, it uses the hardhat account 0 private key.
 const deployerPrivateKey =
-  process.env.DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
+  process.env.DEPLOYER_PRIVATE_KEY ?? "rahasia";
 // If not set, it uses ours Etherscan default API key.
 const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
 
@@ -24,9 +24,19 @@ const config: HardhatUserConfig = {
         // https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options
         runs: 200,
       },
+      outputSelection: {
+        "*": {
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "metadata"
+          ]
+        },
+      },
     },
   },
-  defaultNetwork: "polygonMumbai",
+  defaultNetwork: "modeTestnet",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -89,6 +99,10 @@ const config: HardhatUserConfig = {
       zksync: true,
       accounts: [deployerPrivateKey],
       verifyURL: "https://zksync2-mainnet-explorer.zksync.io/contract_verification",
+    },
+    modeTestnet: {
+      url: "https://sepolia.mode.network",
+      accounts: [deployerPrivateKey],
     },
   },
   verify: {
