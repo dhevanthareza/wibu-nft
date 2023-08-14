@@ -36,7 +36,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "modeTestnet",
+  defaultNetwork: "sepolia",
   namedAccounts: {
     deployer: {
       // By default, it will take the first Hardhat account as the deployer
@@ -57,7 +57,7 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     sepolia: {
-      url: `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
+      url: "https://sepolia.publicgoods.network",
       accounts: [deployerPrivateKey],
     },
     goerli: {
